@@ -1,0 +1,26 @@
+---
+import '../styles/global.css';
+
+const { frontmatter } = Astro.props;
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{frontmatter.title}</title>
+    </head>
+    <body>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/blog">Blog</a>
+        <h1>{frontmatter.title}</h1>
+        <body>
+            <article class="prose">
+              <slot />
+            </article>
+          </body>
+    </body>
+</html>

@@ -1,0 +1,27 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+@font-face {
+    font-family: New York;
+    font-style: normal;
+    font-weight: 400 1000;
+    font-display: swap;
+    src: url("../assets/fonts/NewYork.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: New York;
+    font-style: italic;
+    font-weight: 400 1000;
+    font-display: swap;
+    src: url("../assets/fonts/NewYorkItalic.ttf") format("truetype");
+}
+
+body {
+    font-family: New York, serif;
+    font-optical-sizing: auto;
+}
+
+a {
+    @apply text-blue-600 underline hover:text-blue-800;
+}
