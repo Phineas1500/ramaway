@@ -13,14 +13,14 @@ const { frontmatter } = Astro.props;
         <title>{frontmatter.title}</title>
     </head>
     <body>
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/blog">Blog</a>
-        <h1>{frontmatter.title}</h1>
-        <body>
-            <article class="prose">
-              <slot />
-            </article>
-          </body>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/blog">Blog</a>
+        </nav>
+        <article class="prose mx-auto px-6 max-w-2xl">
+            <h1>{frontmatter.title}</h1>
+            <slot />
+        </article>
     </body>
 </html>

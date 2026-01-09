@@ -14,6 +14,7 @@
     "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
+    "@catppuccin/tailwindcss": "^1.0.0",
     "@tailwindcss/typography": "^0.5.19"
   }
 }
