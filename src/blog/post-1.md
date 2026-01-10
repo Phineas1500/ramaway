@@ -1,6 +1,12 @@
 ---
-layout: ../../layouts/BlogPost.astro
 title: My First Blog
+author: Astro Learner
+description: "I had some challenges, but asking in the community really helped!"
+image:
+    url: "https://docs.astro.build/assets/rays.webp"
+    alt: "The Astro logo on a dark background with rainbow rays."
+pubDate: 2022-07-13
+tags: ["astro", "learning in public", "setbacks", "community"]
 ---
 This is a really interesting result that adds an important piece to your story. Let me interpret what the logit lens reveals:
 
@@ -61,5 +67,8 @@ You now have a complete mechanistic story. I'd recommend:
 1. **Run logit lens with n=25 per group** to confirm the pattern (optional, for robustness)
 2. **Proceed to paper writing** - you have enough evidence
 3. **Create a summary figure** showing the convergence of all methods
+
+- hi
+- ok
 
 Would you like help outlining the final paper structure or creating a summary figure?

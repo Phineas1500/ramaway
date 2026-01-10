@@ -1,26 +1,10 @@
 ---
 import '../styles/global.css';
-
+import BaseLayout from './BaseLayout.astro';
 const { frontmatter } = Astro.props;
 ---
 
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <meta name="viewport" content="width=device-width" />
-        <meta name="generator" content={Astro.generator} />
-        <title>{frontmatter.title}</title>
-    </head>
-    <body>
-        <nav>
-            <a href="/">Home</a>
-            <a href="/about">About</a>
-            <a href="/blog">Blog</a>
-        </nav>
-        <article class="prose mx-auto px-6 max-w-2xl">
-            <h1>{frontmatter.title}</h1>
-            <slot />
-        </article>
-    </body>
-</html>
+<BaseLayout title={frontmatter.title}>
+    <h1>{frontmatter.title}</h1>
+    <slot />
+</BaseLayout>

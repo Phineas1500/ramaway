@@ -1,22 +1,14 @@
 ---
 import '../styles/global.css';
-
-const pageTitle = "Home";
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import clubPenguinPlayercard from '../assets/club-penguin-playercard.png';
+const pageTitle = "Welcome to Ramaway!";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
-	</head>
-	<body>
-		<a href="/">Home</a>
-		<a href="/about">About</a>
-		<a href="/blog">Blog</a>
-		<h1 class="text-3xl font-bold text-blue-500">{pageTitle}</h1>
-		<h2>Welcome to ramaway!</h2>
-	</body>
-</html>
+<BaseLayout title={pageTitle}>
+	<h1>{pageTitle}</h1>
+	<p>I'm Sriram, a developer and student.</p>
+	<Image src={clubPenguinPlayercard} alt="Club Penguin Playercard" width={450} height={450} />
+	<p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
+</BaseLayout>
