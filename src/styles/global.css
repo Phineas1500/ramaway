@@ -36,7 +36,7 @@
 
 /* ========== Fonts ========== */
 @font-face {
-  font-family: New York;
+  font-family: 'New York Web';
   font-style: normal;
   font-weight: 400 1000;
   font-display: swap;
@@ -44,7 +44,7 @@
 }
 
 @font-face {
-  font-family: New York;
+  font-family: 'New York Web';
   font-style: italic;
   font-weight: 400 1000;
   font-display: swap;
@@ -52,15 +52,19 @@
 }
 
 body {
-  font-family: New York, serif;
+  font-family: 'New York Web', serif;
   background-color: var(--ctp-color-base);
   color: var(--ctp-color-text);
   /* Matches AnuPpuccin font weights */
-  font-weight: 400; 
+  font-weight: 400;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 /* ========== Prose (Content) Overrides ========== */
 .prose {
+  width: 100%;
+
   --tw-prose-body: var(--ctp-color-text);
   --tw-prose-headings: var(--ctp-color-text);
   --tw-prose-links: var(--ctp-color-blue);
@@ -174,6 +178,9 @@ body {
   width: 100%;
   border-collapse: collapse;
   margin: 1.5em 0;
+  display: block;
+  overflow-x: auto;
+  max-width: 100%;
 }
 
 .prose thead {
@@ -243,14 +250,22 @@ body {
 
 .nav-links {
     width: 100%;
-    display: none;
     margin: 0;
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    /* background-color: var(--ctp-color-base); */
+    border-bottom: 1px solid var(--ctp-color-surface2); 
+    background-color: rgba(238, 230, 221, 0.85);
+    backdrop-filter: blur(10px);
 }
   
 .nav-links a {
-    display: block;
+    display: inline-block;
     text-align: center;
-    padding: 10px 0;
+    padding: 15px 20px;
     text-decoration: none;
     font-size: 1.2rem;
     font-weight: bold;
@@ -267,15 +282,7 @@ body {
     .nav-links {
         margin-left: 0;
         padding-left: 5em;
-        display: block;
-        width: 100%;
-        position: sticky;
-        top: 0;
-        z-index: 50;
-        /* background-color: var(--ctp-color-base); */
-        border-bottom: 1px solid var(--ctp-color-surface2); 
-        background-color: rgba(238, 230, 221, 0.85);
-        backdrop-filter: blur(10px);
+        justify-content: flex-start;
     }
   
     .nav-links a {
