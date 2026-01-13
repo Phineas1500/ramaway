@@ -6,6 +6,10 @@ const { frontmatter } = Astro.props;
 
 <BaseLayout title={frontmatter.title}>
     <h1>{frontmatter.title}</h1>
-    {frontmatter.author && <p>By {frontmatter.author}</p>}
+    {(frontmatter.author && frontmatter.pubDate) && (
+        <div class="text-[var(--ctp-color-subtext0)] text-sm -mt-2 mb-8">
+            {frontmatter.author} • {frontmatter.pubDate.toLocaleDateString('en-US', { timeZone: 'UTC', year: 'numeric', month: 'long', day: 'numeric' })}
+        </div>
+    )}
     <slot />
 </BaseLayout>
