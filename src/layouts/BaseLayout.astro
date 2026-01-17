@@ -4,6 +4,8 @@ import NavBar from '../components/NavBar.astro';
 import Footer from '../components/Footer.astro';
 const { title } = Astro.props;
 const googleAnalyticsId = import.meta.env.PUBLIC_GOOGLE_ANALYTICS_ID;
+const umamiSrc = import.meta.env.PUBLIC_UMAMI_SRC;
+const umamiId = import.meta.env.PUBLIC_UMAMI_ID;
 ---
 
 <html lang="en">
@@ -18,6 +20,7 @@ const googleAnalyticsId = import.meta.env.PUBLIC_GOOGLE_ANALYTICS_ID;
 
             gtag('config', googleAnalyticsId);
         </script>
+        <script defer src={umamiSrc} data-website-id={umamiId}></script>
         <link rel="icon" type="image/svg+xml" href="/IMG_0790.jpeg" />
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
