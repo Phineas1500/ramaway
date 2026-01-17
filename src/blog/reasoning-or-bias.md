@@ -6,7 +6,7 @@ image:
   url: https://docs.astro.build/assets/rays.webp
   alt: The Astro logo on a dark background with rainbow rays.
 pubDate: 2026-01-12
-tags: ["astro", "learning in public", "setbacks", "community"]
+tags:
 ---
 ## tl;dr
 I’m trying to answer whether LLMs actually perform multi-hop reasoning on ontology tasks, or whether any success they have shows something shallower.
@@ -42,6 +42,8 @@ However, activation patching shows that we can't say exactly *what* probing is p
 Another negative result I got was from SAE analysis. The top differential features I found encode surface patterns, like punctuation and formatting. I also found one high-effect feature which was about reasoning. But it’s very possible that all these features are just a result of shallow pattern matching. This would be consistent with my hypothesis that models have a fixed generalization tencency, and it would also add to my suspicion that *p* is distributed.
 
 In short, apparent multi-hop success looks to be a result of fixed generalization bias, and it’s not a result of compositional reasoning or a decision made in any one component. I'm not close to done researching this, and I plan to look more into logit lens and other related works.
+
+My code: https://github.com/Phineas1500/beyond-deduction
 ## Methods
 ### Dataset Design
 I adapted the InAbHyD dataset for my experiment. I kept the original natural language data generation method, but I also added support for variations in first-order logic format with natural language entities, and in FOL format with symbolic (variable) entities.
