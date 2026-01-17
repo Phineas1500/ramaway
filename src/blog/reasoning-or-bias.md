@@ -27,7 +27,9 @@ My first piece of evidence to back this up is that **models perform conjunction 
 
 My conclusion from this is that models detect conjunctions and don’t traverse ontologies. Basically, salience doesn’t really matter, but adding one bridge entity (conjunction) does.
 
-Another piece of evidence I found is that analyzing overlap between H1 failures and H2 successes confirms task-insensitivity. Specifically for DeepSeek V3, which has a *p* of roughly 0.40, **73% of its H2 successes are also H1 failures**, and they have the same output for H1 and H2. This isn’t genuine reasoning, because if the model learns H2 (the parent) by properly reasoning, it has to know H1 (the child). And in the 27% of successes for H1 and H2, more than half show the model hedging by outputting both answers for each.
+Another piece of evidence I found is that analyzing overlap between H1 failures and H2 successes confirms task-insensitivity. Specifically for DeepSeek V3, which has a *p* of roughly 0.40, **73% of its H2 successes are also H1 failures** (they have the same output for H1 and H2).
+
+If the model learns H2 (the parent) by properly reasoning through the ontology, it has to know H1 (the child). This 73% overlap between H1 failures and H2 successes shows a lack of genuine reasoning. It suggests that the model is skipping the chain and generalizing to a fixed level that aligns with the parent concept. And in the 27% of successes for H1 and H2, more than half show the model hedging by outputting both answers for each.
 
 *See Table 4: Overlap Analysis of DeepSeek V3 H2 Successes*
 
@@ -37,7 +39,7 @@ My third piece of evidence comes from linear probing: the output-level probe sho
 
 However, activation patching shows that we can't say exactly *what* probing is predicting. Patching early layer activations barely changes the final decision, making it more likely that the model's 2-hop accuracy (its *p* constant) is **distributed among many layers**. Probing isn't saying that models make a final decision early, just that it's detecting some abstract feature that correlates with the output. This still could be important, but I don't know what that feature is.
 
-Another negative result I got was from SAE analysis. The top differential features I found encode surface patterns, like punctuation and formatting. I also found one high-effect feature which was about reasoning. But it’s very possible that all these features are just a result of shallow pattern matching. This would be consistent with my hypothesis that models have a fixed generalization tendency, and it would also add to my suspicion that *p* is distributed.
+Another negative result I got was from SAE analysis. The top differential features I found encode surface patterns, like punctuation and formatting. I also found one high-effect feature which was about reasoning. But it’s very possible that all these features are just a result of shallow pattern matching. This would be consistent with my hypothesis that models have a fixed generalization tencency, and it would also add to my suspicion that *p* is distributed.
 
 In short, apparent multi-hop success looks to be a result of fixed generalization bias, and it’s not a result of compositional reasoning or a decision made in any one component. I'm not close to done researching this, and I plan to look more into logit lens and other related works.
 ## Methods
