@@ -6,7 +6,7 @@ image:
   url: https://docs.astro.build/assets/rays.webp
   alt: The Astro logo on a dark background with rainbow rays.
 pubDate: 2026-01-12
-tags:
+tags: ["astro", "learning in public", "setbacks", "community"]
 ---
 ## tl;dr
 I’m trying to answer whether LLMs actually perform multi-hop reasoning on ontology tasks, or whether any success they have shows something shallower.
