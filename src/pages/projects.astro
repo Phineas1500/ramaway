@@ -1,0 +1,205 @@
+---
+import '../styles/global.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import moltopiaLogo from '../assets/moltopia-logo.png';
+import minomizeLogo from '../assets/minomize-logo.png';
+import ratbotLogo from '../assets/ratbot-logo.png';
+const pageTitle = "Projects";
+
+const projects = [
+  {
+    name: "Moltopia",
+    date: "Feb 2026 – Present",
+    description: "A virtual world for OpenClaw agents where they can chat, craft, and trade.",
+    bullets: [],
+    links: [
+      { label: "Website", url: "https://moltopia.org/" },
+      { label: "Twitter/X", url: "https://x.com/MoltopiaOrg" },
+      { label: "GitHub", url: "https://github.com/Phineas1500/moltopia" },
+    ],
+  },
+  {
+    name: "NLP Research",
+    date: "Oct 2025 – Present",
+    description: "Exploring transformer limitations in reasoning using mechanistic interpretability techniques.",
+    bullets: [],
+    links: [
+      { label: "Blog Post", url: "https://ramaway.com/blog/reasoning-or-bias/" },
+      { label: "GitHub", url: "https://github.com/Phineas1500/beyond-deduction" },
+    ],
+  },
+  {
+    name: "minomize",
+    date: "Feb 2025 – Present",
+    description: "A platform that speeds up videos using sentiment analysis. My contributions: ",
+    bullets: [
+      "Reduced video upload times by 50% via compression + parallel processing.",
+      "Built GPU-backed video analysis pipeline in Python (Modal + FFmpeg).",
+      "Implemented RAG workflows using Claude Sonnet 4.",
+      "Integrated AWS S3 for storage.",
+    ],
+    links: [
+      { label: "Website", url: "https://minomize.com" },
+      { label: "GitHub (Frontend)", url: "https://github.com/Phineas1500/mino" },
+      { label: "GitHub (Server)", url: "https://github.com/Phineas1500/mino-server" },
+    ],
+  },
+  {
+    name: "Bonsai",
+    date: "Jan 2025 – May 2025",
+    description: "A React Native iOS AI chatbot assistant that decomposes complex user tasks into subtasks.",
+    bullets: [],
+    links: [
+      { label: "GitHub", url: "https://github.com/Phineas1500/Bonsai" },
+    ],
+  },
+  {
+    name: "@RatIsSoCute",
+    date: "Apr 2021 – Present",
+    description: "A Twitter/X bot with 40,000+ followers that replies to posts with dog pictures using the GraphQL API.",
+    bullets: [],
+    links: [
+      { label: "Twitter/X", url: "https://x.com/RatIsSoCute" },
+      { label: "GitHub", url: "https://github.com/Phineas1500/Rat-Bot-Bluesky" },
+    ],
+  },
+];
+
+const imageMap = {
+  "Moltopia": moltopiaLogo,
+  "minomize": minomizeLogo,
+  "@RatIsSoCute": ratbotLogo,
+} as Record<string, ImageMetadata>;
+---
+
+<BaseLayout title={pageTitle}>
+  <h1>{pageTitle}</h1>
+  <p>Things I've built and am working on.</p>
+
+  <div class="project-list">
+    {projects.map((project) => {
+      const image = imageMap[project.name];
+      return (
+        <div class="project-card">
+          {image && (
+            <div class="project-image">
+              <Image src={image} alt={`${project.name} logo`} width={80} height={80} />
+            </div>
+          )}
+          <div class="project-content">
+            <div class="project-header">
+              <h2>{project.name}</h2>
+              <span class="project-date">{project.date}</span>
+            </div>
+            <p>{project.description}</p>
+            {project.bullets.length > 0 && (
+              <ul>
+                {project.bullets.map((bullet) => (
+                  <li>{bullet}</li>
+                ))}
+              </ul>
+            )}
+            <div class="project-links">
+              {project.links.map((link) => (
+                <a href={link.url} target="_blank" rel="noopener noreferrer">{link.label} &rarr;</a>
+              ))}
+            </div>
+          </div>
+        </div>
+      );
+    })}
+  </div>
+</BaseLayout>
+
+<style>
+  .project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .project-card {
+    border: 1px solid var(--ctp-color-surface2);
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+    background-color: rgba(230, 219, 209, 0.35);
+    transition: border-color 0.2s ease;
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+  }
+
+  .project-image {
+    flex-shrink: 0;
+  }
+
+  .project-image img {
+    border-radius: 8px;
+    object-fit: cover;
+  }
+
+  .project-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .project-card:hover {
+    border-color: var(--ctp-color-overlay1);
+  }
+
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .project-card h2 {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    font-size: 1.25rem;
+  }
+
+  .project-date {
+    color: var(--ctp-color-subtext0);
+    font-size: 0.875rem;
+    white-space: nowrap;
+  }
+
+  .project-card p {
+    margin: 0.5rem 0 0;
+  }
+
+  .project-card ul {
+    margin: 0.5rem 0 0;
+    padding-left: 1.25rem;
+  }
+
+  .project-card li {
+    margin: 0.15rem 0;
+    font-size: 0.95rem;
+  }
+
+  .project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+  }
+
+  .project-links a {
+    color: var(--ctp-color-blue);
+    font-size: 0.9rem;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .project-links a:hover {
+    text-decoration: underline;
+    color: var(--ctp-color-teal);
+  }
+</style>
