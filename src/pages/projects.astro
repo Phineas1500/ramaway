@@ -5,6 +5,7 @@ import { Image } from 'astro:assets';
 import moltopiaLogo from '../assets/moltopia-logo.png';
 import minomizeLogo from '../assets/minomize-logo.png';
 import ratbotLogo from '../assets/ratbot-logo.png';
+import cpjLogo from '../assets/cpj-logo.png';
 const pageTitle = "Projects";
 
 const projects = [
@@ -55,6 +56,15 @@ const projects = [
     ],
   },
   {
+    name: "Club Penguin Journey",
+    date: "Apr 2024 – Aug 2025",
+    description: "Developed for CPJourney, a recreation of Club Penguin with over 800,000 users. Used Phaser, an HTML5 game framework, to build rooms and functionalities.",
+    bullets: [],
+    links: [
+      { label: "Website", url: "https://www.cpjourney.net/" },
+    ],
+  },
+  {
     name: "@RatIsSoCute",
     date: "Apr 2021 – Present",
     description: "A Twitter/X bot with 40,000+ followers that replies to posts with dog pictures using the GraphQL API.",
@@ -69,6 +79,7 @@ const projects = [
 const imageMap = {
   "Moltopia": moltopiaLogo,
   "minomize": minomizeLogo,
+  "Club Penguin Journey": cpjLogo,
   "@RatIsSoCute": ratbotLogo,
 } as Record<string, ImageMetadata>;
 
