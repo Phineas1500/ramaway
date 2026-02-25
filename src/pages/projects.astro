@@ -25,7 +25,7 @@ const projects = [
     description: "Exploring transformer limitations in reasoning using mechanistic interpretability techniques.",
     bullets: [],
     links: [
-      { label: "Blog Post", url: "https://ramaway.com/blog/reasoning-or-bias/" },
+      { label: "Blog Post", url: "https://www.lesswrong.com/posts/kQvouwwHnEJkJ47uv/is-it-reasoning-or-just-a-fixed-bias-1" },
       { label: "GitHub", url: "https://github.com/Phineas1500/beyond-deduction" },
     ],
   },
@@ -71,6 +71,51 @@ const imageMap = {
   "minomize": minomizeLogo,
   "@RatIsSoCute": ratbotLogo,
 } as Record<string, ImageMetadata>;
+
+const experience = [
+  {
+    role: "Software Engineering Intern",
+    org: "Data-Core Systems (AILABS Finance)",
+    location: "Bristol, PA",
+    date: "May 2025 – Present (Full-Time & Part-Time)",
+    bullets: [
+      { text: "Building agentic AI workflows for WealthEngine.AI, a stock recommendations and portfolio management platform powered by deep reinforcement learning." },
+      { text: "Creating knowledge graphs for event-driven architectures by mapping value chains into ontologies." },
+      { text: "Implemented data clustering, fine-tuning, news analytics, and web scraping." },
+    ],
+    links: [
+      { label: "Website", url: "https://wealthengine.ai" },
+    ],
+  },
+  {
+    role: "Teaching Assistant & Team Lead",
+    org: "The Data Mine",
+    location: "West Lafayette, IN",
+    date: "Aug 2023 – May 2025 (Part-Time)",
+    bullets: [
+      { text: "Pacific Air Forces (PACAF): Led students from Colorado, Purdue, and the Air Force Academy to build a financial forecaster.", sub: "Built a sentiment analysis + XGBoost solution to predict quarterly revenue for companies." },
+      { text: "Pacific Life: Led students from Ball State and Notre Dame who were building actuarial and generative AI projects." },
+    ],
+    links: [
+      { label: "Poster", url: "https://drive.google.com/file/d/1rF0nlNIA2XST8jmicy-OK7LOadxhPuux/view" },
+    ],
+  },
+  {
+    role: "Treasurer",
+    org: "Purdue Hackers",
+    location: "West Lafayette, IN",
+    date: "Mar 2024 – Present",
+    bullets: [
+      { text: "Treasurer for Purdue Hackers, Purdue's largest CS club (~500 members).", sub: "Students meet every Friday night to build creative technical projects." },
+      { text: "Secured grants from Paul Graham (Y Combinator co-founder), Cloudflare, Kleiner Perkins, Mitchell Hashimoto, Patrick McKenzie, and more." },
+      { text: "Organized an AMA with Steve Wozniak." },
+    ],
+    links: [
+      { label: "Website", url: "https://purduehackers.com" },
+      { label: "YouTube (Woz AMA)", url: "https://www.youtube.com/watch?v=25RlBawQEb4" },
+    ],
+  },
+];
 ---
 
 <BaseLayout title={pageTitle}>
@@ -81,34 +126,69 @@ const imageMap = {
     {projects.map((project) => {
       const image = imageMap[project.name];
       return (
-        <div class="project-card">
-          {image && (
-            <div class="project-image">
-              <Image src={image} alt={`${project.name} logo`} width={80} height={80} />
-            </div>
-          )}
-          <div class="project-content">
-            <div class="project-header">
+        <div class="project-card not-prose">
+          <div class="project-header">
+            <div class="project-title">
+              {image && (
+                <Image src={image} alt={`${project.name} logo`} width={36} height={36} class="project-icon" />
+              )}
               <h2>{project.name}</h2>
-              <span class="project-date">{project.date}</span>
             </div>
-            <p>{project.description}</p>
-            {project.bullets.length > 0 && (
-              <ul>
-                {project.bullets.map((bullet) => (
-                  <li>{bullet}</li>
-                ))}
-              </ul>
-            )}
-            <div class="project-links">
-              {project.links.map((link) => (
-                <a href={link.url} target="_blank" rel="noopener noreferrer">{link.label} &rarr;</a>
+            <span class="project-date">{project.date}</span>
+          </div>
+          <p>{project.description}</p>
+          {project.bullets.length > 0 && (
+            <ul>
+              {project.bullets.map((bullet) => (
+                <li>{bullet}</li>
               ))}
-            </div>
+            </ul>
+          )}
+          <div class="project-links">
+            {project.links.map((link) => (
+              <a href={link.url} target="_blank" rel="noopener noreferrer">{link.label} &rarr;</a>
+            ))}
           </div>
         </div>
       );
     })}
+  </div>
+
+  <hr />
+
+  <h1>Experience</h1>
+
+  <div class="project-list">
+    {experience.map((exp) => (
+      <div class="project-card not-prose">
+        <div class="project-content">
+          <div class="project-header">
+            <h2>{exp.role}</h2>
+            <span class="project-date">{exp.date}</span>
+          </div>
+          <p class="exp-org">{exp.org} — {exp.location}</p>
+          <ul>
+            {exp.bullets.map((bullet) => (
+              <li>
+                {bullet.text}
+                {bullet.sub && (
+                  <ul>
+                    <li>{bullet.sub}</li>
+                  </ul>
+                )}
+              </li>
+            ))}
+          </ul>
+          {exp.links && exp.links.length > 0 && (
+            <div class="project-links">
+              {exp.links.map((link) => (
+                <a href={link.url} target="_blank" rel="noopener noreferrer">{link.label} &rarr;</a>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    ))}
   </div>
 </BaseLayout>
 
@@ -126,23 +206,31 @@ const imageMap = {
     padding: 1.25rem 1.5rem;
     background-color: rgba(230, 219, 209, 0.35);
     transition: border-color 0.2s ease;
-    display: flex;
-    gap: 1.25rem;
-    align-items: flex-start;
+    color: var(--ctp-color-text);
   }
 
-  .project-image {
-    flex-shrink: 0;
+  .project-card h2 {
+    color: var(--ctp-color-peach);
   }
 
-  .project-image img {
-    border-radius: 8px;
-    object-fit: cover;
+  .project-card a {
+    color: var(--ctp-color-blue);
+    text-decoration: none;
   }
 
-  .project-content {
-    flex: 1;
-    min-width: 0;
+  .project-card a:hover {
+    text-decoration: underline;
+    color: var(--ctp-color-teal);
+  }
+
+  .project-card ul {
+    list-style: disc;
+    padding-left: 1.25rem;
+    margin: 0.5rem 0 0;
+  }
+
+  .project-card ul > li::marker {
+    color: var(--ctp-color-teal);
   }
 
   .project-card:hover {
@@ -152,16 +240,28 @@ const imageMap = {
   .project-header {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
     flex-wrap: wrap;
     gap: 0.5rem;
   }
 
+  .project-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .project-icon {
+    border-radius: 6px;
+    object-fit: cover;
+  }
+
   .project-card h2 {
-    margin: 0 !important;
-    padding: 0 !important;
-    border: none !important;
+    margin: 0;
+    padding: 0;
+    border: none;
     font-size: 1.25rem;
+    line-height: 1;
   }
 
   .project-date {
@@ -171,11 +271,16 @@ const imageMap = {
   }
 
   .project-card p {
-    margin: 0.5rem 0 0;
+    margin: 0.25rem 0 0;
   }
 
-  .project-card ul {
+  .project-card > .project-content > ul {
     margin: 0.5rem 0 0;
+    padding-left: 1.25rem;
+  }
+
+  .project-card ul ul {
+    margin: 0;
     padding-left: 1.25rem;
   }
 
@@ -202,4 +307,11 @@ const imageMap = {
     text-decoration: underline;
     color: var(--ctp-color-teal);
   }
+
+  .exp-org {
+    color: var(--ctp-color-subtext0);
+    font-size: 0.95rem;
+    margin: 0.25rem 0 0 !important;
+  }
+
 </style>
