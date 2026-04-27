@@ -30,6 +30,12 @@ import linkedinLogo from '../assets/linkedin-logo.png';
     if (link) {
         const isApple = /Mac|iPhone|iPad|iPod/.test(navigator.platform) ||
             (navigator.userAgent.includes('Mac') && 'ontouchend' in document);
-        link.textContent = isApple ? '\uF8FF' : 'Apple';
+        if (isApple) {
+            link.textContent = '\uF8FF';
+            link.style.fontFamily = 'serif';
+        } else {
+            link.textContent = 'Apple';
+            link.style.fontFamily = "inherit";
+        }
     }
 </script>
