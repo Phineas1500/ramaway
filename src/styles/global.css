@@ -51,6 +51,14 @@
   src: url("/fonts/NewYorkItalic.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: 'Burbank Web';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/BurbankBigRegularMedium.ttf") format("truetype");
+}
+
 body {
   font-family: 'New York Web', serif;
   background-color: var(--ctp-color-base);

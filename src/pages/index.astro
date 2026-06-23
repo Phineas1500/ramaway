@@ -7,11 +7,200 @@ const pageTitle = "Welcome to Ramaway!";
 ---
 
 <BaseLayout title={pageTitle}>
-	<h1>{pageTitle}</h1>
-	<p>I'm Sriram, a developer and recent Purdue CS graduate.</p>
-	<Image src={clubPenguinPlayercard} alt="Club Penguin Playercard" width={450} height={450} style="margin: 0 auto;" />
-	<br>
-	<a href="https://ring.purduehackers.com/previous">←</a>
-	<a href="https://ring.purduehackers.com/">Purdue Hackers webring</a>
-	<a href="https://ring.purduehackers.com/next">→</a>
+  <h1>{pageTitle}</h1>
+  <p>I'm Sriram, a developer and recent Purdue CS graduate.</p>
+
+  <section class="home-scene not-prose" aria-label="Onhand introduction">
+    <div class="club-penguin-dialogue" role="note" aria-label="Onhand project note">
+      <img class="club-penguin-dialogue-frame" src="/club-penguin-chat-bubble.svg" alt="" aria-hidden="true" />
+      <p>
+        <span>
+          Hey! I'm building Onhand, an AI tutor for your open tabs.
+          <a href="https://useonhand.com/" target="_blank" rel="noopener noreferrer">Check it out!</a>
+        </span>
+      </p>
+    </div>
+
+    <a class="penguin-link" href="https://useonhand.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Onhand">
+      <Image src={clubPenguinPlayercard} alt="Club Penguin Playercard" width={450} height={450} loading="eager" />
+    </a>
+  </section>
+
+  <nav class="webring-links" aria-label="Purdue Hackers webring">
+    <a href="https://ring.purduehackers.com/previous" aria-label="Previous Purdue Hackers webring site">←</a>
+    <a href="https://ring.purduehackers.com/">Purdue Hackers webring</a>
+    <a href="https://ring.purduehackers.com/next" aria-label="Next Purdue Hackers webring site">→</a>
+  </nav>
 </BaseLayout>
+
+<style>
+  .home-scene {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    min-height: 500px;
+    margin: 0.25rem auto 0.25rem;
+    isolation: isolate;
+  }
+
+  .penguin-link {
+    display: block;
+    width: min(100%, 450px);
+    transform-origin: bottom center;
+    animation: penguin-shrink 700ms cubic-bezier(0.2, 0.85, 0.25, 1) 400ms forwards;
+  }
+
+  .penguin-link:focus-visible {
+    outline: 3px solid var(--ctp-color-blue);
+    outline-offset: 8px;
+    border-radius: 12px;
+  }
+
+  .penguin-link img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .club-penguin-dialogue {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    z-index: 2;
+    width: min(100%, 500px);
+    aspect-ratio: 500 / 220;
+    opacity: 0;
+    transform: translate(-50%, 20px) scale(0.94);
+    transform-origin: 50% 80%;
+    animation: dialogue-pop 520ms cubic-bezier(0.18, 0.9, 0.2, 1.12) 850ms forwards;
+  }
+
+  .club-penguin-dialogue-frame {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .club-penguin-dialogue p {
+    position: absolute;
+    inset: 7% 8% 33% 8%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin: 0;
+    color: #1e2734;
+    font-family: "Burbank Web", "Burbank Big Regular", "Burbank Small Medium", Burbank, "Arial Rounded MT Bold", "Trebuchet MS", sans-serif;
+    font-size: clamp(1.65rem, 4.8vw, 2rem);
+    font-weight: 500;
+    line-height: 1.02;
+    letter-spacing: 0;
+    text-align: center;
+    text-shadow: 0 1px 0 #ffffff;
+  }
+
+  .club-penguin-dialogue span {
+    display: block;
+  }
+
+  .club-penguin-dialogue a {
+    color: #005db8;
+    text-decoration: none;
+  }
+
+  .club-penguin-dialogue a:hover,
+  .club-penguin-dialogue a:focus-visible {
+    color: #003f8f;
+    text-decoration: underline;
+  }
+
+  .webring-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    margin: 1rem 0 2rem;
+    text-align: center;
+  }
+
+  .webring-links a {
+    color: var(--ctp-color-blue);
+    text-decoration: none;
+  }
+
+  .webring-links a:hover,
+  .webring-links a:focus-visible {
+    color: var(--ctp-color-teal);
+    text-decoration: underline;
+  }
+
+  @keyframes penguin-shrink {
+    to {
+      transform: translateY(10px) scale(0.62);
+    }
+  }
+
+  @keyframes dialogue-pop {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, 20px) scale(0.94);
+    }
+
+    70% {
+      opacity: 1;
+      transform: translate(-50%, 0) scale(1.03);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translate(-50%, 0) scale(1);
+    }
+  }
+
+  @media (max-width: 520px) {
+    .home-scene {
+      min-height: 420px;
+      margin-top: 0.25rem;
+    }
+
+    .penguin-link {
+      width: min(88vw, 340px);
+    }
+
+    .club-penguin-dialogue {
+      width: min(98vw, 380px);
+      top: 60px;
+    }
+
+    .club-penguin-dialogue p {
+      inset: 7% 8% 33% 8%;
+      font-size: clamp(1.12rem, 5vw, 1.28rem);
+    }
+
+    @keyframes penguin-shrink {
+      to {
+        transform: translateY(10px) scale(0.62);
+      }
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .penguin-link,
+    .club-penguin-dialogue {
+      animation: none;
+    }
+
+    .penguin-link {
+      transform: translateY(10px) scale(0.62);
+    }
+
+    .club-penguin-dialogue {
+      opacity: 1;
+      transform: translate(-50%, 0) scale(1);
+    }
+  }
+</style>
