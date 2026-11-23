@@ -3,6 +3,7 @@ import '../styles/global.css';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
 import onhandLogo from '../assets/onhand-logo.png';
+import sieveLogo from '../assets/sieve-logo.png';
 import moltopiaLogo from '../assets/moltopia-logo.png';
 import minomizeLogo from '../assets/minomize-logo.png';
 import ratbotLogo from '../assets/ratbot-logo.png';
@@ -20,6 +21,25 @@ const projects = [
       { label: "Website", url: "https://useonhand.com/" },
       { label: "Chrome Web Store", url: "https://chromewebstore.google.com/detail/onhand/ogjmncmkpgdkkcibdiacmagaehjohljb" },
       { label: "GitHub", url: "https://github.com/Phineas1500/Onhand" },
+    ],
+  },
+  {
+    name: "AndroidLM",
+    date: "Sep 2026 – Oct 2026",
+    description: "An offline research assistant for Android. Runs a 35B-parameter model on a 12GB phone and answers from an on-device copy of Wikipedia, with no network permission.",
+    bullets: [],
+    links: [
+      { label: "GitHub", url: "https://github.com/Phineas1500/AndroidLM" },
+    ],
+  },
+  {
+    name: "Sieve",
+    date: "Aug 2026",
+    description: "A Chrome extension that detects AI-generated images entirely on-device. Winner of the $2,700 poidh local-AI challenge.",
+    bullets: [],
+    links: [
+      { label: "Chrome Web Store", url: "https://chromewebstore.google.com/detail/sieve-%E2%80%94-local-ai-image-de/mbhemgalgiocpjdakmbojlbjljhmphni" },
+      { label: "GitHub", url: "https://github.com/Phineas1500/sieve-ai-image-detector" },
     ],
   },
   {
@@ -100,6 +120,7 @@ const projects = [
 
 const imageMap = {
   "Onhand": onhandLogo,
+  "Sieve": sieveLogo,
   "Moltopia": moltopiaLogo,
   "minomize": minomizeLogo,
   "Club Penguin Journey": cpjLogo,
